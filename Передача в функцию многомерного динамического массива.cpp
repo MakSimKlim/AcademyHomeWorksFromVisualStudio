@@ -1,10 +1,3 @@
-﻿//Задача №1
-//
-// ДЗ №38 Климов (многомерные динамические массивы)
-//
-//Написать функцию, добавляющую столбец 
-//двухмерному массиву в указанную позицию.
-
 
 #include <iostream>
 #include <time.h>
@@ -15,24 +8,26 @@ using namespace std;
 
 //Передача в функцию многомерного динамического массива
 
-int** ArrDinamicRandomise(unsigned int dim1, unsigned int dim2) // функция многомерного динамического массива
+int** ArrDinamicGenerator(unsigned int sizeLines, unsigned int sizeColumns) // функция многомерного динамического массива
                                                                 //unsigned - целое без знака, от 0 и выше, отрицательных значений нет
 {
-	int** ptrary = new int* [dim1];
-	for (int i = 0; i < dim1; i++)
+	int** dinamicArr = new int* [sizeLines];
+	for (int i = 0; i < sizeLines; i++)
 	{
-		ptrary[i] = new int[dim2];
+		dinamicArr[i] = new int[sizeColumns];
 	}
-	return ptrary;
+	return dinamicArr;
 }
 
-void ArrDinamicDestroyer(int** ary, unsigned int dim1) //высвобождение памяти путем удаления массива
+
+
+void ArrDinamicDestroyer(int** dinamicArr, unsigned int sizeLines) //высвобождение памяти путем удаления массива
 {
-	for (int i = 0; i < dim1; i++) 
+	for (int i = 0; i < sizeLines; i++)
 	{
-		delete[] ary[i];
+		delete[] dinamicArr[i];
 	}
-	delete[] ary;
+	delete[] dinamicArr;
 }
 
 
@@ -45,34 +40,33 @@ int main()
 
 
 	cout << "\n ***********************************************************************" << endl;
-	cout << " *              Программа добавления столбца в двумерный массив        *" << endl;
+	cout << " *    Программа передачи в функцию многомерного динамического массива  *" << endl;
 	cout << " ***********************************************************************" << endl;
 	
 	
-    unsigned int DIM1 = 0;
-	unsigned int DIM2 = 0;
+    unsigned int lines = 0;
+	unsigned int columns = 0;
 	int** matrix;
 
 	cout << "Введите количество строк и столбцов многомерного массив: " << "\n";
-	cin >> DIM1 >> DIM2;
+	cin >> lines >> columns;
 
 	cout << "\n";
 
 	// создание массива
-	matrix = ArrDinamicRandomise(DIM1, DIM2);
+	matrix = ArrDinamicGenerator(lines, columns);
 
-	// использование
-	for (int i = 0; i < DIM1; i++) {
-		for (int j = 0; j < DIM2; j++) {
-			matrix[i][j] = 0 + rand() % (10 - 0);;
-			cout << setw(4) << matrix[i][j]<<" ";
-			
+	// использование массива
+	for (int i = 0; i < lines; i++) {
+		for (int j = 0; j < columns; j++) {
+			matrix[i][j] = 0 + rand() % (10 - 0);
+			cout << setw(4) << matrix[i][j]<<" ";//setw(8) - настройка ширины столбца
 		}
 		cout << "\n";
 	}
 
 	// уничтожение
-	ArrDinamicDestroyer(matrix, DIM1);
+	ArrDinamicDestroyer(matrix, lines);
 
 	return 0;
 }
