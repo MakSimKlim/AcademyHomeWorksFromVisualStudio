@@ -6,6 +6,8 @@
 
 using namespace std;
 setlocale(LC_ALL, "Rus");
+SetConsoleCP(1251);
+SetConsoleOutputCP(1251);
 
 //===  öåëî÷èñëåííûå çíà÷åíèÿ =======================================================================
 
