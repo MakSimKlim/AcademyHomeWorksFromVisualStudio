@@ -1,5 +1,5 @@
 #pragma once
-#ifdef INTEGER //проверка определена ли константа, указы­вающая на тип данных
+#ifdef INTEGER //ГЇГ°Г®ГўГҐГ°ГЄГ  Г®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­Г  Г«ГЁ ГЄГ®Г­Г±ГІГ Г­ГІГ , ГіГЄГ Г§Г»В­ГўГ ГѕГ№Г Гї Г­Г  ГІГЁГЇ Г¤Г Г­Г­Г»Гµ
 #define writeArray writeArrayINTEGER
 #define showArray showArrayINTEGER
 #define minArrayElement minArrayElementINTEGER
@@ -8,7 +8,7 @@
 #define sortArrayElementMin sortArrayElementMinINTEGER
 #define reductArray reductArrayINTEGER
 #endif
-#ifdef DOUBLE//проверка определена ли константа, указы­вающая на тип данных
+#ifdef DOUBLE//ГЇГ°Г®ГўГҐГ°ГЄГ  Г®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­Г  Г«ГЁ ГЄГ®Г­Г±ГІГ Г­ГІГ , ГіГЄГ Г§Г»В­ГўГ ГѕГ№Г Гї Г­Г  ГІГЁГЇ Г¤Г Г­Г­Г»Гµ
 #define writeArray writeArrayDOUBLE
 #define showArray showArrayDOUBLE
 #define minArrayElement minArrayElementDOUBLE
@@ -17,7 +17,7 @@
 #define sortArrayElementMin sortArrayElementMinDOUBLE
 #define reductArray reductArrayDOUBLE
 #endif
-#ifdef CHAR//проверка определена ли константа, указы­вающая на тип данных
+#ifdef CHAR//ГЇГ°Г®ГўГҐГ°ГЄГ  Г®ГЇГ°ГҐГ¤ГҐГ«ГҐГ­Г  Г«ГЁ ГЄГ®Г­Г±ГІГ Г­ГІГ , ГіГЄГ Г§Г»В­ГўГ ГѕГ№Г Гї Г­Г  ГІГЁГЇ Г¤Г Г­Г­Г»Гµ
 #define writeArray writeArrayCHAR
 #define showArray showArrayCHAR
 #define minArrayElement minArrayElementCHAR
@@ -29,33 +29,34 @@
 
 #include <iostream>
 #include <string>
-#include <stdlib.h>//для рандомайзера
+#include <stdlib.h>//Г¤Г«Гї Г°Г Г­Г¤Г®Г¬Г Г©Г§ГҐГ°Г 
 
 using namespace std;
+setlocale(LC_ALL, "Rus");
 
-//прототипы функций с целочисленными переменными
-void writeArrayINTEGER(int* arr, int size);//прототип функции для заполнения массива случайными зна­чениями
-void showArrayINTEGER(int* arr, int size);//прототип функции для вывода в консоль массива с случайными зна­чениями
-void minArrayElementINTEGER(int* arr, int size);// прототип функции для поиска минимального элемента
-void maxArrayElementINTEGER(int* arr, int size);// прототип функции для поиска максимального элемента
-void sortArrayElementMaxINTEGER(int* arr, int size);// прототип функции для сортировки от максимального элемента
-void sortArrayElementMinINTEGER(int* arr, int size);// прототип функции для сортировки от минимального элемента
-void reductArrayINTEGER(int* arr, int size);// прототип функции для редактирования значения массива.
+//ГЇГ°Г®ГІГ®ГІГЁГЇГ» ГґГіГ­ГЄГ¶ГЁГ© Г± Г¶ГҐГ«Г®Г·ГЁГ±Г«ГҐГ­Г­Г»Г¬ГЁ ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»Г¬ГЁ
+void writeArrayINTEGER(int* arr, int size);//ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГї Г¬Г Г±Г±ГЁГўГ  Г±Г«ГіГ·Г Г©Г­Г»Г¬ГЁ Г§Г­Г В­Г·ГҐГ­ГЁГїГ¬ГЁ
+void showArrayINTEGER(int* arr, int size);//ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї ГўГ»ГўГ®Г¤Г  Гў ГЄГ®Г­Г±Г®Г«Гј Г¬Г Г±Г±ГЁГўГ  Г± Г±Г«ГіГ·Г Г©Г­Г»Г¬ГЁ Г§Г­Г В­Г·ГҐГ­ГЁГїГ¬ГЁ
+void minArrayElementINTEGER(int* arr, int size);// ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї ГЇГ®ГЁГ±ГЄГ  Г¬ГЁГ­ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
+void maxArrayElementINTEGER(int* arr, int size);// ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї ГЇГ®ГЁГ±ГЄГ  Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
+void sortArrayElementMaxINTEGER(int* arr, int size);// ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї Г±Г®Г°ГІГЁГ°Г®ГўГЄГЁ Г®ГІ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
+void sortArrayElementMinINTEGER(int* arr, int size);// ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї Г±Г®Г°ГІГЁГ°Г®ГўГЄГЁ Г®ГІ Г¬ГЁГ­ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
+void reductArrayINTEGER(int* arr, int size);// ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї Г°ГҐГ¤Г ГЄГІГЁГ°Г®ГўГ Г­ГЁГї Г§Г­Г Г·ГҐГ­ГЁГї Г¬Г Г±Г±ГЁГўГ .
 
-//прототипы функций с переменными с плавающей запятой
-void writeArrayDOUBLE(double* arr, int size);//прототип функции для заполнения массива случайными зна­чениями
-void showArrayDOUBLE(double* arr, int size);//прототип функции для вывода в консоль массива с случайными зна­чениями
-void minArrayElementDOUBLE(double* arr, int size);// прототип функции для поиска минимального элемента
-void maxArrayElementDOUBLE(double* arr, int size);// прототип функции для поиска максимального элемента
-void sortArrayElementMaxDOUBLE(double* arr, int size);// прототип функции для сортировки от максимального элемента
-void sortArrayElementMinDOUBLE(double* arr, int size);// прототип функции для сортировки от минимального элемента
-void reductArrayDOUBLE(double* arr, int size);// прототип функции для редактирования значения массива.
+//ГЇГ°Г®ГІГ®ГІГЁГЇГ» ГґГіГ­ГЄГ¶ГЁГ© Г± ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»Г¬ГЁ Г± ГЇГ«Г ГўГ ГѕГ№ГҐГ© Г§Г ГЇГїГІГ®Г©
+void writeArrayDOUBLE(double* arr, int size);//ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГї Г¬Г Г±Г±ГЁГўГ  Г±Г«ГіГ·Г Г©Г­Г»Г¬ГЁ Г§Г­Г В­Г·ГҐГ­ГЁГїГ¬ГЁ
+void showArrayDOUBLE(double* arr, int size);//ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї ГўГ»ГўГ®Г¤Г  Гў ГЄГ®Г­Г±Г®Г«Гј Г¬Г Г±Г±ГЁГўГ  Г± Г±Г«ГіГ·Г Г©Г­Г»Г¬ГЁ Г§Г­Г В­Г·ГҐГ­ГЁГїГ¬ГЁ
+void minArrayElementDOUBLE(double* arr, int size);// ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї ГЇГ®ГЁГ±ГЄГ  Г¬ГЁГ­ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
+void maxArrayElementDOUBLE(double* arr, int size);// ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї ГЇГ®ГЁГ±ГЄГ  Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
+void sortArrayElementMaxDOUBLE(double* arr, int size);// ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї Г±Г®Г°ГІГЁГ°Г®ГўГЄГЁ Г®ГІ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
+void sortArrayElementMinDOUBLE(double* arr, int size);// ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї Г±Г®Г°ГІГЁГ°Г®ГўГЄГЁ Г®ГІ Г¬ГЁГ­ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
+void reductArrayDOUBLE(double* arr, int size);// ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї Г°ГҐГ¤Г ГЄГІГЁГ°Г®ГўГ Г­ГЁГї Г§Г­Г Г·ГҐГ­ГЁГї Г¬Г Г±Г±ГЁГўГ .
 
-//прототипы функций со строковыми переменными
-void writeArrayCHAR(char* arr, int size);//прототип функции для заполнения массива случайными зна­чениями
-void showArrayCHAR(char* arr, int size);//прототип функции для вывода в консоль массива с случайными зна­чениями
-void minArrayElementCHAR(char* arr, int size);// прототип функции для поиска минимального элемента
-void maxArrayElementCHAR(char* arr, int size);// прототип функции для поиска максимального элемента
-void sortArrayElementMaxCHAR(char* arr, int size);// прототип функции для сортировки от максимального элемента
-void sortArrayElementMinCHAR(char* arr, int size);// прототип функции для сортировки от минимального элемента
-void reductArrayCHAR(char* arr, int size);// прототип функции для редактирования значения массива.
+//ГЇГ°Г®ГІГ®ГІГЁГЇГ» ГґГіГ­ГЄГ¶ГЁГ© Г±Г® Г±ГІГ°Г®ГЄГ®ГўГ»Г¬ГЁ ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»Г¬ГЁ
+void writeArrayCHAR(char* arr, int size);//ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГї Г¬Г Г±Г±ГЁГўГ  Г±Г«ГіГ·Г Г©Г­Г»Г¬ГЁ Г§Г­Г В­Г·ГҐГ­ГЁГїГ¬ГЁ
+void showArrayCHAR(char* arr, int size);//ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї ГўГ»ГўГ®Г¤Г  Гў ГЄГ®Г­Г±Г®Г«Гј Г¬Г Г±Г±ГЁГўГ  Г± Г±Г«ГіГ·Г Г©Г­Г»Г¬ГЁ Г§Г­Г В­Г·ГҐГ­ГЁГїГ¬ГЁ
+void minArrayElementCHAR(char* arr, int size);// ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї ГЇГ®ГЁГ±ГЄГ  Г¬ГЁГ­ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
+void maxArrayElementCHAR(char* arr, int size);// ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї ГЇГ®ГЁГ±ГЄГ  Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
+void sortArrayElementMaxCHAR(char* arr, int size);// ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї Г±Г®Г°ГІГЁГ°Г®ГўГЄГЁ Г®ГІ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
+void sortArrayElementMinCHAR(char* arr, int size);// ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї Г±Г®Г°ГІГЁГ°Г®ГўГЄГЁ Г®ГІ Г¬ГЁГ­ГЁГ¬Г Г«ГјГ­Г®ГЈГ® ГЅГ«ГҐГ¬ГҐГ­ГІГ 
+void reductArrayCHAR(char* arr, int size);// ГЇГ°Г®ГІГ®ГІГЁГЇ ГґГіГ­ГЄГ¶ГЁГЁ Г¤Г«Гї Г°ГҐГ¤Г ГЄГІГЁГ°Г®ГўГ Г­ГЁГї Г§Г­Г Г·ГҐГ­ГЁГї Г¬Г Г±Г±ГЁГўГ .
