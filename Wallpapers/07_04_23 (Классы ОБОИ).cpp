@@ -1,97 +1,115 @@
 ﻿// 07_04_23 (Классы ОБОИ)
 //
-//Написать программу стоимость обоев
-//в результате выдать необходимое кол-во рулонов и общую стоимость закупки
-//использовать классы: квартира, комната, рулон обоев
+//
+//Написать программу «Стоимость обоев». Програм-ма запрашивает: 
+//▷количество комнат в квартире, в которых плани - руется клеить обои,
+//▷параметры каждой комнаты,
+//▷параметры каждого вида обоев, которые планиру - ется использовать.
+//В результате расчета программа выдает : необходимое
+//количество рулонов каждого вида, общую стоимость
+//закупки обоев.
+//Разработать и использовать в программе классы :
+//«Квартира», «Комната», «РулонОбоев».
+//Атрибуты(поля) квартиры : список комнат.
+//Атрибуты комнаты : название, размеры, клеить потолок
+//или нет.Атрибуты рулона : название, размеры, цена
 
 // Главный СPP
 
 #include <iostream>
 #include <Windows.h>
 #include <stdlib.h>
-
-#include "mysql_connection.h"
-
-#include <cppconn/driver.h>
-#include <cppconn/exception.h>
-#include <cppconn/resultset.h>
-#include <cppconn/statement.h>
+#include <stdio.h>
+#include <conio.h>
+#include <mysql.h>
 
 #include "Header.h"
 #include "Source.cpp"
 
 using namespace std;
 
-const string server = "tcp://127.0.0.1:3306";
-const string username = "root";
-const string password = "";
 
 int main()
 {
 
     setlocale(LC_ALL, "Rus");
 
-    sql::Driver* driver;
-    sql::Connection* con;
-    sql::Statement* stmt;
-    sql::ResultSet* res;
+    cout << "***********************************************************" << "\n";
+    cout << "*               Расчет обоев версия 1.0                   *" << "\n";
+    cout << "***********************************************************" << "\n";
 
-    try 
+    //=================================================================================
+    //соединение с базой данный MySQL и вывод оттуда данных
+    cout<<"Вывод значений базы данных обоев: "<<"\n";
+
+    MYSQL* conn;
+    MYSQL_RES* res;
+    MYSQL_ROW row;
+
+    int i = 0;
+
+    // Получаем дескриптор соединения
+    conn = mysql_init(NULL);
+    if (conn == NULL)
     {
-        driver = get_driver_instance();
-        //con = driver->connect("tcp://127.0.0.1:3306", "root", " ");
-        con = driver->connect(server, username, password);
+        // Если дескриптор не получен – выводим сообщение об ошибке
+        fprintf(stderr, "Error: can'tcreate MySQL-descriptor\n");
+        //exit(1); //Если используется оконное приложение
+    }
+    // Подключаемся к серверу
+    if (!mysql_real_connect(conn, "localhost", "root", "", "test", NULL, NULL, 0))
+    {
+        // Если нет возможности установить соединение с сервером
+        // базы данных выводим сообщение об ошибке
+        fprintf(stderr, "Error: can'tconnecttodatabase %s\n", mysql_error(conn));
+    }
+    else
+    {
+        // Если соединение успешно установлено выводим фразу - "Success!"
+        fprintf(stdout, "Соединение с базой MySQL успешно!\n");
+    }
 
-        con->setSchema("test");
+    mysql_set_character_set(conn, "utf8");
+    //Смотрим изменилась ли кодировка на нужную, по умалчанию идёт latin1
+    cout << "кодировка: " << mysql_character_set_name(conn) << endl;
 
-        stmt = con->createStatement();
-        res = stmt->executeQuery("select * from `catalogwallpaper`");
+    mysql_query(conn, "SELECT idwallpaper, nameMark FROM catalogwallpaper"); //Делаем запрос nameMark к таблице по имени catalogwallpaper =)
 
-        while (res->next()) {
-            cout << "\t... MySQL replies: ";
-            /* Access column data by alias or column name */
-            cout << res->getString("nameMark") << endl;
-            cout << "\t... MySQL says it again: ";
-            /* Access column data by numeric offset, 1 is the first column */
-            cout << res->getString(1) << endl;
+    if (res = mysql_store_result(conn)) {
+        while (row = mysql_fetch_row(res)) {
+            for (i = 0; i < mysql_num_fields(res); i++) {
+                cout << row[i] << "\n"; //Выводим все что есть в базе через цикл
+            }
         }
-        delete res;
-        delete stmt;
-        delete con;
+    } 
+    else fprintf(stderr, "%s\n", mysql_error(conn));
 
-    }
-    catch (sql::SQLException& e) 
-    {
-        cout << "# ERR: SQLException in " << __FILE__;
-        cout << "(" << __FUNCTION__ << ") on line " << __LINE__ << endl;
-        cout << "# ERR: " << e.what();
-        cout << " (MySQL error code: " << e.getErrorCode();
-        cout << ", SQLState: " << e.getSQLState() << " )" << endl;
-    
-    cout << endl;
-    }
+    // Закрываем соединение с сервером базы данных
+    mysql_close(conn);
 
-    cout << "Расчет обоев версия 1.0" << "\n";
+    //=================================================================================
+
+    // основная программа
+
     int inputCountRoom = 0;
     double roomWidth = 0, roomLength = 0, roomHeight = 0, result = 0;
 
-    double* res = new double[inputCountRoom];
+    double* res1 = new double[inputCountRoom];
 
-    cout << "Введите количество комнат, в которых требуется сделать ремонт" << "\n";
+    cout << "\nВведите количество комнат, в которых требуется сделать ремонт" << "\n";
     cin >> inputCountRoom;
 
     Apartment apartment(inputCountRoom);
-    res = apartment.createRooms(roomWidth, roomLength, roomHeight, result);
+    res1 = apartment.createRooms(roomWidth, roomLength, roomHeight, result);
 
     //cout << "Площадь стен комнат:" << "\n";
     for (int i = 0; i < inputCountRoom; i++)
     {
-       cout<<"Площадь стен комнаты №"<< i+1 <<" равна " << res[i] << " м2" << "\n";
+        cout << "Площадь стен комнаты №" << i + 1 << " равна " << res1[i] << " м2" << "\n";
     }
 
     //double paramsWallpaper[7][3] = {};
-    
+
     //return EXIT_SUCCESS;
 
 }
-
